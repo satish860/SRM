@@ -9,9 +9,17 @@ namespace SRM.Domain.Entity
 {
     public class CreateStudentCommand:ICommandHandler<Student>
     {
-        public Task Execute(Student input)
+        private readonly IQueryHandler queryHander;
+
+        public CreateStudentCommand(IQueryHandler queryHander)
         {
-            throw new NotImplementedException();
+            this.queryHander = queryHander;
+        }
+
+        public async Task Execute(Student input)
+        {
+            var document =await this.queryHander.Handle<string, SrmDocument>(string.Empty);
+            await document.Client.CreateDocumentAsync(document.DocumentLink, input);
         }
     }
 }

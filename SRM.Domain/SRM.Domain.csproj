@@ -63,6 +63,7 @@
     <Compile Include="IQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entity\Student.cs" />
+    <Compile Include="QueryHandler.cs" />
     <Compile Include="Query\DocumentQuery.cs" />
   </ItemGroup>
   <ItemGroup>

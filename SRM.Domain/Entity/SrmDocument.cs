@@ -14,7 +14,7 @@ namespace SRM.Domain.Entity
     {
         public DocumentClient Client { get; set; }
         public string DocumentLink { get; set; }
-        //NNTO : Do we need database as well?
+        //TODO : Do we need database as well?
     }
 }
 
