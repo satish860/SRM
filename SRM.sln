@@ -14,17 +14,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRM.Domain", "SRM.Domain\SR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRM.Web", "SRM.Web\SRM.Web.csproj", "{44242EF6-E3DC-4F77-B7C4-9B27C4233183}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{330D7574-F16D-4684-B86C-8D792632A232}"
-	ProjectSection(SolutionItems) = preProject
-		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
-		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{07313003-9945-4649-B6F1-398351FDB687}"
-	ProjectSection(SolutionItems) = preProject
-		PublishScripts\Configurations\SRMWeb-WAWS-dev.json = PublishScripts\Configurations\SRMWeb-WAWS-dev.json
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRM.Domain.Tests", "SRM.Domain.Tests\SRM.Domain.Tests.csproj", "{D3CF2244-1086-4F49-A575-04F5FE94A906}"
 EndProject
 Global
@@ -48,8 +37,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{07313003-9945-4649-B6F1-398351FDB687} = {330D7574-F16D-4684-B86C-8D792632A232}
 	EndGlobalSection
 EndGlobal
