@@ -13,20 +13,26 @@ namespace SRM.Domain.Entity
 {
     public class CreateStudentCommand:ICommandHandler<Student>
     {
-        private string endPointUrl = "https://srmdb.documents.azure.com:443/";
-        private string AuthorizationKey = "hJE9vaWWp2xUCKhG32iVMt4GROu4egyYwszwQstrkcRa5wjuclSi390plLNE2TE4ETxyFxfI50RJuQXWtQjEBg==";
-        public CreateStudentCommand()
+        private readonly IConnectionManager connectionManager;
+       
+        public CreateStudentCommand(IConnectionManager connectionManager)
         {
-
+            this.connectionManager = connectionManager;
         }
 
         public async Task Execute(Student input)
         {
-            var client = new DocumentClient(new Uri(endPointUrl), AuthorizationKey);
-            var database= await client.CreateDatabaseAsync(new Database { Id = "srm" });
-            var collection = await client.CreateDocumentCollectionAsync(database.Resource.CollectionsLink, new DocumentCollection { Id = "studentCollection" });
-            var student= await client.CreateDocumentAsync(collection.Resource.DocumentsLink, input);
+            try
+            {
+                var client= await this.connectionManager.GetOrCreateDatabase();
+                var collection = await this.connectionManager.GetOrCreateCollection("studentCollection");
+                var student = await client.CreateDocumentAsync(collection.DocumentsLink, input);
+            }
+            catch (Exception ex)
+            {
 
+            }
         }
+        
     }
 }

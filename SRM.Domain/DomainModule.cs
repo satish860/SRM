@@ -23,6 +23,7 @@ namespace SRM.Domain
             builder.RegisterAssemblyTypes(assembly,entityAssembly)
                 .AsClosedTypesOf(typeof(ICommandHandler<>));
             builder.RegisterType<CommandBus>().As<ICommandBus>();
+            builder.RegisterType<ConnectionManager>().SingleInstance().As<IConnectionManager>();
         }
     }
 }
