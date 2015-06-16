@@ -14,8 +14,8 @@ namespace SRM.Domain
         private Database database = null;
         private DocumentClient client = null;
         private IDictionary<string, DocumentCollection> documentCollections;
-        private string endPointUrl = "https://srmdb.documents.azure.com:443/";
-        private string AuthorizationKey = "hJE9vaWWp2xUCKhG32iVMt4GROu4egyYwszwQstrkcRa5wjuclSi390plLNE2TE4ETxyFxfI50RJuQXWtQjEBg==";
+        private string endPointUrl = ""
+        private string AuthorizationKey = "";
         public ConnectionManager()
         {
             this.documentCollections = new Dictionary<string, DocumentCollection>();

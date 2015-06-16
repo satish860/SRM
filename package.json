@@ -1,0 +1,19 @@
+{
+  "name": "SRM",
+  "version": "0.0.0",
+  "description": "Student resource manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/satish860/SRM.git"
+  },
+  "author": "satish",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/satish860/SRM/issues"
+  },
+  "homepage": "https://github.com/satish860/SRM"
+}
