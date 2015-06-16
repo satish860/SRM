@@ -18,10 +18,11 @@ namespace SRM.Domain
 
         protected override void Load(ContainerBuilder builder)
         {
-            var assembly=Assembly.GetExecutingAssembly();
-            var entityAssembly = typeof(CreateStudentCommand).Assembly;
-            builder.RegisterAssemblyTypes(assembly,entityAssembly)
+            //var assembly=Assembly.GetExecutingAssembly();
+            //var entityAssembly = typeof(CreateStudentCommand).Assembly;
+            builder.RegisterAssemblyTypes(this.GetType().Assembly)
                 .AsClosedTypesOf(typeof(ICommandHandler<>));
+            builder.RegisterAssemblyTypes(this.GetType().Assembly).AsImplementedInterfaces();
             builder.RegisterType<CommandBus>().As<ICommandBus>();
             builder.RegisterType<ConnectionManager>().SingleInstance().As<IConnectionManager>();
         }

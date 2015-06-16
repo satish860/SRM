@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Documents.Linq;
+using System.Configuration;
 
 namespace SRM.Domain
 {
@@ -14,24 +15,22 @@ namespace SRM.Domain
         private Database database = null;
         private DocumentClient client = null;
         private IDictionary<string, DocumentCollection> documentCollections;
-        private string endPointUrl = ""
-        private string AuthorizationKey = "";
+        private string endPointUrl = ConfigurationManager.AppSettings["dbUrl"];
+        private string AuthorizationKey = ConfigurationManager.AppSettings["dbAuthKey"];
         public ConnectionManager()
         {
             this.documentCollections = new Dictionary<string, DocumentCollection>();
         }
 
-
-
         public async Task<DocumentClient> GetOrCreateDatabase(string databaseName = null)
         {
-            if (database == null)
-                return await Task.FromResult(client);
+            //if (database == null)
+                //return await Task.FromResult(client);
             this.client = new DocumentClient(new Uri(endPointUrl), AuthorizationKey);
             var queryDatabase = client.CreateDatabaseQuery().Where(p => p.Id == "srm").ToArray();
             if (queryDatabase.Any())
             {
-                database = queryDatabase.First();
+                database = queryDatabase.First();   
             }
             else
             {

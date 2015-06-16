@@ -20,7 +20,7 @@ namespace SRM.Domain
             return await queryHandler.ExecuteFor(input);          
         }
 
-        public async Task<TOutput> ExecuteAll<TOutput>()
+        public async Task<IEnumerable<TOutput>> ExecuteAll<TOutput>()
         {
             var queryHandler = this.containerContext.Resolve<IQueryAll<TOutput>>();
             return await queryHandler.Execute();  

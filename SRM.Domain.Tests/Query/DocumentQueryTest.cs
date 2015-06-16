@@ -12,17 +12,17 @@ namespace SRM.Domain.Tests.Query
 {
     public class DocumentQueryTest
     {
-        private readonly IQueryHandler queryHandler;
-        public DocumentQueryTest(IQueryHandler queryHandler)
+        private readonly IConnectionManager connectionManager;
+        public DocumentQueryTest(IConnectionManager connectionManager)
         {
-            this.queryHandler = queryHandler;
+            this.connectionManager = connectionManager;
         }
         public async Task Should_be_Able_To_Get_Document()
         {
-            var srmDocument = await this.queryHandler.Handle<string, SrmDocument>(string.Empty);
-            srmDocument.ShouldNotBeNull();
-            var client = srmDocument.Client;
+            var client = await this.connectionManager.GetOrCreateDatabase();
             client.ShouldNotBeNull();
+            var collection = await this.connectionManager.GetOrCreateCollection("studentCollection");
+            collection.DocumentsLink.ShouldNotBeEmpty();
         }
     }
 }

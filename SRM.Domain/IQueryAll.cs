@@ -8,6 +8,6 @@ namespace SRM.Domain
 {
     public interface IQueryAll<TOutput>
     {
-        Task<TOutput> Execute();
+        Task<IEnumerable<TOutput>> Execute();
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SRM.Domain.Tests
 {
-    public class IocConvention:Convention
+    public class IocConvention : Convention
     {
         private ILifetimeScope scope;
         public IocConvention()
@@ -26,7 +26,8 @@ namespace SRM.Domain.Tests
             var componentAssembly = typeof(DomainModule).Assembly;
             var containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterAssemblyModules<DomainModule>(componentAssembly);
-            var assembly=Assembly.GetExecutingAssembly();
+            //containerBuilder.RegisterAssemblyTypes(componentAssembly).AsImplementedInterfaces();
+            var assembly = Assembly.GetExecutingAssembly();
             containerBuilder.RegisterAssemblyTypes(assembly)
                 .AsSelf();
             IContainer container = containerBuilder.Build();

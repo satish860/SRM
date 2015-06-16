@@ -10,6 +10,6 @@ namespace SRM.Domain
     {
         Task<TOutput> Handle<TInput, TOutput>(TInput input);
 
-        Task<TOutput> ExecuteAll<TOutput>();
+        Task<IEnumerable<TOutput>> ExecuteAll<TOutput>();
     }
 }

@@ -11,10 +11,10 @@ using Newtonsoft.Json;
 
 namespace SRM.Domain.Entity
 {
-    public class CreateStudentCommand:ICommandHandler<Student>
+    public class CreateStudentCommand : ICommandHandler<Student>
     {
         private readonly IConnectionManager connectionManager;
-       
+
         public CreateStudentCommand(IConnectionManager connectionManager)
         {
             this.connectionManager = connectionManager;
@@ -24,8 +24,9 @@ namespace SRM.Domain.Entity
         {
             try
             {
-                var client= await this.connectionManager.GetOrCreateDatabase();
+                var client = await this.connectionManager.GetOrCreateDatabase();
                 var collection = await this.connectionManager.GetOrCreateCollection("studentCollection");
+                input.ID = StudentNumber.Get().ToString();
                 var student = await client.CreateDocumentAsync(collection.DocumentsLink, input);
             }
             catch (Exception ex)
@@ -33,6 +34,6 @@ namespace SRM.Domain.Entity
 
             }
         }
-        
+
     }
 }
